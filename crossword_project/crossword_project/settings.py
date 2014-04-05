@@ -47,7 +47,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'crossword_project.urls'
+ROOT_URLCONF = 'crossword_app.urls'
 
 WSGI_APPLICATION = 'crossword_project.wsgi.application'
 
