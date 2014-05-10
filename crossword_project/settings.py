@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from os.path import abspath, dirname, join, normpath
+BASE_DIR = dirname(abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crossword_app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,7 +50,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'crossword_app.urls'
 
-WSGI_APPLICATION = 'crossword_project.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
@@ -58,7 +59,7 @@ WSGI_APPLICATION = 'crossword_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -80,3 +81,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATE_DIRS = (
+    normpath(join(BASE_DIR, 'templates'))
+)
