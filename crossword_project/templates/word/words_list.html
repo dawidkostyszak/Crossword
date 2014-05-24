@@ -1,5 +1,12 @@
-{% for word in words %}
-    {{ word.name }}
-    {{ word.question }}
-    {{ word.category }}
-{% endfor %}
+{% extends "home.html" %}
+
+{% block content %}
+	<div>
+	{% for word in words %}
+		<div></div>{{ word.name }}
+		{{ word.question }}
+		{{ word.category }}
+	{% endfor %}
+	</div>
+
+{% endblock %}
