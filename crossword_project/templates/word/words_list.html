@@ -2,10 +2,23 @@
 
 {% block content %}
 	<div>
+    Istniejące słowa:
 	{% for word in words %}
-		<div></div>{{ word.name }}
-		{{ word.question }}
-		{{ word.category }}
+		<div>
+            {{ word.name }}
+            {{ word.question }}
+            {{ word.question.categories }}
+        </div>
+	{% endfor %}
+	</div>
+
+    <div>
+    </br>Istniejące pytania:
+	{% for question in questions %}
+		<div>
+            {{ question.question }}
+            {{ question.categories }}
+        </div>
 	{% endfor %}
 	</div>
 

@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse
 from django.db import DatabaseError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from models import Word
+from models import Word, Question
 from form import WordForm
 from django.views.generic import FormView, ListView
 
@@ -12,10 +12,10 @@ class WordList(ListView):
     model = Word
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
+        # self.model.objects.filter(question__in=Question.objects.filter(categories=Category.objects.get(category='Basic')))
         context = super(WordList, self).get_context_data(**kwargs)
-        # Add in the publisher
         context['words'] = self.model.objects.all()
+        context['questions'] = Question.objects.all()
         return context
 
 
@@ -31,11 +31,19 @@ class WordAdd(FormView):
         if form.is_valid():
             data = form.cleaned_data
             try:
-                word = Word(name=data['name'], question=data['question'], category=data['category'])
-                word.save()
+                word_name = data['name']
+                question, question_exist = Question.objects.get_or_create(question=data['question'], categories=data['category'])
+                if not question_exist:
+                    question.save()
+
+                # question.categories.add(data['category'])
+
+                word = Word(name=word_name, length=len(word_name), question=question)
+                question.word_set.add(word)
+
             except DatabaseError:
                 return render(request, self.template_name, {'form': form})
-            # <process form cleaned data>
+
             return HttpResponseRedirect(reverse('words_list'))
 
         return render(request, self.template_name, {'form': form})
