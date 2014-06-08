@@ -13,6 +13,7 @@
     <!-- Bootstrap core CSS -->
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+  link rel="stylesheet" href="{% static 'css/base.css' %}" >
     <link rel="stylesheet" href="{% static 'bower_components/html5-boilerplate/css/normalize.css' %}">
     
 
@@ -51,6 +52,9 @@
             {% else %}
             <a class="navbar-form navbar-right" href="{% url 'login' %}">
                 <button type="submit" class="btn btn-success">Sign in</button>
+            </a>
+            <a class="navbar-form navbar-right" href="{% url 'registry' %}">
+                <button type="submit" class="btn btn-info">Registry</button>
             </a>
             {% endif %}
 

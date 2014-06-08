@@ -1,9 +1,8 @@
-from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.db import DatabaseError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.utils.decorators import method_decorator
+from ..views import LoginRequiredMixin
 from models import Word, Question
 from form import WordForm
 from django.views.generic import FormView, ListView
@@ -21,13 +20,9 @@ class WordList(ListView):
         return context
 
 
-class WordAdd(FormView):
+class WordAdd(LoginRequiredMixin, FormView):
     template_name = "word/add_word.html"
     form_class = WordForm
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(WordAdd, self).dispatch(*args, **kwargs)
 
     def form_valid(self, form):
         return super(FormView, self).form_valid(form)
