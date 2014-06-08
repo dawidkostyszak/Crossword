@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crossword_app',
-    'crossword_app.word'
+    'crossword_app.word',
+    'crossword_app.auth',
 )
 
 MIDDLEWARE_CLASSES = (

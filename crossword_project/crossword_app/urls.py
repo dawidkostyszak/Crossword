@@ -12,5 +12,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomepageView.as_view(), name="home"),
-    (r'^word/', include('crossword_app.word.urls', app_name='word'))
+    (r'^accounts/', include('crossword_app.auth.urls', app_name='authorization')),
+    (r'^word/', include('crossword_app.word.urls', app_name='word')),
 )
