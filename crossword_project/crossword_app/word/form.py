@@ -1,5 +1,5 @@
 from django import forms
-from crossword_project.crossword_app.word.models import Category
+from models import Category
 
 
 class WordForm(forms.Form):
