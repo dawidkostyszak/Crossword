@@ -1,19 +1,16 @@
 {% extends "home.html" %}
 {% block content %}
 {% if crossword.success %}
-    <div class="component-wrapper">
+    <div class="component-wrapper col-lg-12">
         <div class="col-lg-9 crossword-table-wrapper">
             <table class="crossword-table">
                 <tbody>
                 {% for row in crossword.result %}
                     <tr class="crossword-table-row">
                     {% for char, is_result in row %}
-                        {% if char == "" %}
-                            <td class="crossword-table-cell empty">
-                        {% else %}
-                            <td class="crossword-table-cell">
-                        {% endif %}
-                            <span class="crossword-table-cell-label {% if is_result %}result{% endif %}">
+
+                            <td class="crossword-table-cell{% if char == "" %} empty{% endif %} {% if is_result %} result{% endif %}">
+                            <span class="crossword-table-cell-label ">
                                 {{ char }}
                             </span>
                         </td>

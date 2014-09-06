@@ -2,8 +2,9 @@
 $cell-height: 45px;
 $component-name: crossword;
 
-
-.#{$component-name}-table{
+.component-wrapper{
+  height: 100%;
+  .#{$component-name}-table{
   table-layout: fixed;
 
   .#{$component-name}-table-row{
@@ -18,7 +19,6 @@ $component-name: crossword;
       .#{$component-name}-table-cell-label{
         @include centre();
         overflow: hidden;
-        display: block;
         font-size: 14px;
         font-weight: 600;
       }
@@ -27,9 +27,17 @@ $component-name: crossword;
       border: 0px;
 
     }
+    .result{
+      background: #c4e3f3;
+      .#{$component-name}-table-cell-label{
+        font-weight: 700;
+      }
+    ;
+    }
   }
 }
-.#{$component-name}-questions-wrapper{
-    height:110px;
-    background: #999;
+  .#{$component-name}-questions-wrapper{
+      height:110px;
+      background: #999;
+  }
 }
