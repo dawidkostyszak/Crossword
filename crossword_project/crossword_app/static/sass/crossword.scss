@@ -41,3 +41,8 @@ $component-name: crossword;
       background: #999;
   }
 }
+
+#word-table {
+  width: 100%;
+  table-layout: fixed;
+}

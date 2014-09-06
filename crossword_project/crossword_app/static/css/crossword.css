@@ -29,4 +29,6 @@
     height: 110px;
     background: #999; }
 
-/*# sourceMappingURL=crossword.css.map */
+#word-table {
+  width: 100%;
+  table-layout: fixed; }
