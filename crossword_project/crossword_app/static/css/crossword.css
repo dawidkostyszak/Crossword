@@ -1,28 +1,32 @@
-.crossword-table {
-  table-layout: fixed; }
-  .crossword-table .crossword-table-row .crossword-table-cell {
-    height: 45px;
-    width: 45px;
-    border: 2px solid black;
-    position: relative; }
-    .crossword-table .crossword-table-row .crossword-table-cell .crossword-table-cell-label {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      overflow: hidden;
-      display: block;
-      font-size: 14px;
-      font-weight: 600; }
-  .crossword-table .crossword-table-row .empty {
-    border: 0px; }
-
-.crossword-questions-wrapper {
-  height: 110px;
-  background: #999; }
+.component-wrapper {
+  height: 100%; }
+  .component-wrapper .crossword-table {
+    table-layout: fixed; }
+    .component-wrapper .crossword-table .crossword-table-row .crossword-table-cell {
+      height: 45px;
+      width: 45px;
+      border: 2px solid black;
+      position: relative; }
+      .component-wrapper .crossword-table .crossword-table-row .crossword-table-cell .crossword-table-cell-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        font-size: 14px;
+        font-weight: 600; }
+    .component-wrapper .crossword-table .crossword-table-row .empty {
+      border: 0px; }
+    .component-wrapper .crossword-table .crossword-table-row .result {
+      background: #c4e3f3; }
+      .component-wrapper .crossword-table .crossword-table-row .result .crossword-table-cell-label {
+        font-weight: 700; }
+  .component-wrapper .crossword-questions-wrapper {
+    height: 110px;
+    background: #999; }
 
 /*# sourceMappingURL=crossword.css.map */
