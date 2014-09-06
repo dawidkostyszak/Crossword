@@ -23,3 +23,8 @@ class Word(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def position(cls):
+        DEBUG = True
+        return 'a'

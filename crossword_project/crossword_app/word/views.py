@@ -13,7 +13,11 @@ class WordList(ListView):
     model = Word
 
     def get_context_data(self, **kwargs):
-        # self.model.objects.filter(question__in=Question.objects.filter(categories=Category.objects.get(category='Basic')))
+        # self.model.objects.filter(
+        #   question__in=Question.objects.filter(
+        #       categories=Category.objects.get(category='Basic')
+        #   )
+        # )
         context = super(WordList, self).get_context_data(**kwargs)
         context['words'] = self.model.objects.all()
         context['questions'] = Question.objects.all()
@@ -33,13 +37,20 @@ class WordAdd(LoginRequiredMixin, FormView):
             data = form.cleaned_data
             try:
                 word_name = data['name']
-                question, question_exist = Question.objects.get_or_create(question=data['question'], categories=data['category'])
+                question, question_exist = Question.objects.get_or_create(
+                    question=data['question'],
+                    categories=data['category']
+                )
                 if not question_exist:
                     question.save()
 
                 # question.categories.add(data['category'])
 
-                word = Word(name=word_name, length=len(word_name), question=question)
+                word = Word(
+                    name=word_name,
+                    length=len(word_name),
+                    question=question
+                )
                 question.word_set.add(word)
 
             except DatabaseError:
