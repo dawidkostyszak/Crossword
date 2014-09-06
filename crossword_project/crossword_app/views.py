@@ -1,9 +1,10 @@
 import random
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from crossword_project.crossword_app.word.models import Word
 
 
@@ -11,7 +12,7 @@ class HomepageView(TemplateView):
     template_name = "home.html"
 
     def get(self, request, *args, **kwargs):
-        return HttpResponse('')
+        return HttpResponseRedirect(reverse('words_list'))
 
 
 class LoginRequiredMixin(object):
@@ -24,20 +25,25 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
     template_name = "generate_crossword.html"
     model = Word
 
-    def generate_crossword(self, word):
+    def generate_crossword(self, word, max_loop=100):
         result = []
         for char in word:
             words = list(self.model.objects.filter(
                 name__icontains=char
             ).exclude(
-                name=word
+                name__iexact=word
             ))
 
             while True:
                 if words:
                     word_to_add = random.choice(words)
                 else:
-                    result = self.generate_crossword(word)
+                    if max_loop == 0:
+                        return {
+                            "success": False,
+                            "result": "Can't generate crossword"
+                        }
+                    result = self.generate_crossword(word, max_loop=max_loop-1)
                     return result
 
                 words.remove(word_to_add)
@@ -46,25 +52,37 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
                     result.append(
                         (
                             name,
-                            name.index(char.upper())
+                            name.index(char.upper()),
+                            word_to_add.question
                         )
                     )
                     break
 
-        return result
+        return {
+            "success": True,
+            "result": result
+        }
 
     def format_crossword(self, crossword):
         result = []
-        intendation = max([word[1] for word in crossword])
-        for row, index in crossword:
-            column_to_add = ['' for i in range(intendation - index)]
-            column_to_add.extend([r for r in row])
+        intendation = max([word[1] for word in crossword['result']])
+        for row, index, _ in crossword['result']:
+            column_to_add = [('', False) for i in range(intendation - index)]
+            column_to_add.extend(
+                [(row[r],  r == index) for r in range(row.__len__())]
+            )
             result.append(column_to_add)
 
-        return result
+        crossword['result'] = result
+        return crossword
 
     def get(self, request, *args, **kwargs):
         crossword_result = self.generate_crossword('kazio')
-        crossword = self.format_crossword(crossword_result)
+        if crossword_result['success']:
+            crossword_result = self.format_crossword(crossword_result)
 
-        return render(request, self.template_name, {'crossword': crossword})
+        return render(
+            request,
+            self.template_name,
+            {'crossword': crossword_result}
+        )
