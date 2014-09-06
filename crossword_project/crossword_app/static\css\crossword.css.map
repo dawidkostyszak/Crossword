@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAKI,yCAAwB;EACtB,MAAM,EANE,IAAI;EAOZ,KAAK,EAPG,IAAI;EAQZ,MAAM,EAAE,eAAe;EACvB,QAAQ,EAAE,QAAQ;EAClB,WAAW,EAAE,IAAI;EACjB,YAAY,EAAE,IAAI;EAClB,8DAA6B;IAC3B,SAAS,EAAE,IAAI;IACf,WAAW,EAAE,GAAG",
-"sources": ["static/sass/crossword.scss"],
-"names": [],
-"file": "static%5Ccss%5Ccrossword.css"
-}
