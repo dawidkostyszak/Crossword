@@ -29,6 +29,9 @@
     height: 110px;
     background: #999; }
 
-#word-table {
+#word-table, #category-table {
   width: 100%;
   table-layout: fixed; }
+  #word-table caption, #category-table caption {
+    font-weight: 700;
+    font-size: 24px; }
