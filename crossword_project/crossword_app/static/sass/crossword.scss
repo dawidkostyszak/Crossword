@@ -50,3 +50,20 @@ $component-name: crossword;
   width: 100%;
   table-layout: fixed;
 }
+
+.navigation {
+  height: 50px;
+  background: lightgrey;
+  .add_word, .generate_crossword {
+    margin-top: 8px;
+    text-decoration: none;
+  }
+  .add_word {
+    float: left;
+    margin-left: 30px;
+  }
+  .generate_crossword {
+    float: right;
+    margin-right: 30px;
+  }
+}

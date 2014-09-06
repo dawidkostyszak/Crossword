@@ -35,3 +35,16 @@
   #word-table caption, #category-table caption {
     font-weight: 700;
     font-size: 24px; }
+
+.navigation {
+  height: 50px;
+  background: lightgrey; }
+  .navigation .add_word, .navigation .generate_crossword {
+    margin-top: 8px;
+    text-decoration: none; }
+  .navigation .add_word {
+    float: left;
+    margin-left: 30px; }
+  .navigation .generate_crossword {
+    float: right;
+    margin-right: 30px; }

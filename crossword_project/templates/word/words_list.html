@@ -1,47 +1,56 @@
 {% extends "home.html" %}
+{% block navigation %}
+    <div class="add_word">
+        <a href="{% url "add_word" %}">
+            <button class="btn btn-success">Add word</button>
+        </a>
+    </div>
 
+    <div class="generate_crossword">
+        Podaj slowo glowne: <input name="word" placeholder="Put main word">
+        <a href="{% url "crossword" %}">
+            <button class="btn btn-success">Wygeneruj lipna krzyzowke</button>
+        </a>
+    </div>
+
+{% endblock %}
 {% block content %}
 	<div>
-     <a href="{% url "add_word" %}"><button class="btn btn-success">Add word</button></a>
-    <br/>
-    <a href="{% url "crossword" %}"><button class="btn btn-success">Wygeneruj lipna krzyzowke</button></a>
-    <br/>
-    <table id="word-table">
-    <caption>
-        Istniejące słowa:
-    </caption>
-    <tr>
-        <th>Name</th>
-        <th>Questions</th>
-        <th>Categories</th>
-    </tr>
-    {% for word in words %}
-        <tr>
-            <td>{{ word.name }}</td>
-            <td>{{ word.question }}</td>
-            <td>{{ word.question.categories }}</td>
-        </tr>
-    {% endfor %}
-    </table>
-	</div>
+        <table id="word-table">
+            <caption>
+                Istniejące słowa:
+            </caption>
+            <tr>
+                <th>Name</th>
+                <th>Questions</th>
+                <th>Categories</th>
+            </tr>
+            {% for word in words %}
+                <tr>
+                    <td>{{ word.name }}</td>
+                    <td>{{ word.question }}</td>
+                    <td>{{ word.question.categories }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+            </div>
 
-    <div>
-    <table id="category-table">
-    <caption>
-        Istniejące pytania:
-    </caption>
-    <tr>
-        <th>Question</th>
-        <th>Categories</th>
-    </tr>
-	{% for question in questions %}
-		<tr>
-            <td>{{ question.question }}</td>
-            <td>{{ question.categories }}</td>
-        </tr>
-	{% endfor %}
-    <br/>
-    </table>
+            <div>
+            <table id="category-table">
+            <caption>
+                Istniejące pytania:
+            </caption>
+            <tr>
+                <th>Question</th>
+                <th>Categories</th>
+            </tr>
+            {% for question in questions %}
+                <tr>
+                    <td>{{ question.question }}</td>
+                    <td>{{ question.categories }}</td>
+                </tr>
+            {% endfor %}
+        </table>
 	</div>
 
 {% endblock %}
