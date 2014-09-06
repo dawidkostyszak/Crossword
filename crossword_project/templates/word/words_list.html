@@ -2,6 +2,8 @@
 
 {% block content %}
 	<div>
+     <a href="{% url "add_word" %}"><button>Add word</button></a>
+    <br/>
     Istniejące słowa:
 	{% for word in words %}
 		<div>
@@ -20,6 +22,8 @@
             {{ question.categories }}
         </div>
 	{% endfor %}
+    <br/>
+
 	</div>
 
 {% endblock %}
