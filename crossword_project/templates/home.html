@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS -->
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
-  link rel="stylesheet" href="{% static 'css/base.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/crossword.css' %}" >
     <link rel="stylesheet" href="{% static 'bower_components/html5-boilerplate/css/normalize.css' %}">
     
 
@@ -78,6 +78,8 @@
       <div class="row">
         <div class="col-md-4">
         {% block content %}
+		{% endblock %}
+        {% block crossword %}
 		{% endblock %}
         </div>
       </div>

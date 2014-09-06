@@ -1,0 +1,14 @@
+.crossword {
+  table-layout: fixed; }
+  .crossword .crossword-row .crossword-cell {
+    height: 45px;
+    width: 45px;
+    border: 2px solid black;
+    position: relative;
+    padding-top: 10px;
+    padding-left: 10px; }
+    .crossword .crossword-row .crossword-cell .crossword-cell-span {
+      font-size: 14px;
+      font-weight: 600; }
+
+/*# sourceMappingURL=crossword.css.map */

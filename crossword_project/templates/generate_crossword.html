@@ -1,1 +1,18 @@
-{{ crossword }}
+{% extends "home.html" %}
+{% block content %}
+<table class="crossword">
+<tbody>
+{% for row in crossword %}
+    <tr class="crossword-row">
+    {% for char in row %}
+        <td class="crossword-cell">
+            <span class="crossword-cell-label">
+                {{ char }}
+            </span>
+        </td>
+    {% endfor %}
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

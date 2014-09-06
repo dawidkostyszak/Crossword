@@ -1,0 +1,20 @@
+$cell-height: 45px;
+$component-name: crossword;
+
+.#{$component-name}{
+  table-layout: fixed;
+  .#{$component-name}-row{
+    .#{$component-name}-cell{
+      height: $cell-height;
+      width: $cell-height;
+      border: 2px solid black;
+      position: relative;
+      padding-top: 10px;
+      padding-left: 10px;
+      .#{$component-name}-cell-span{
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+}
