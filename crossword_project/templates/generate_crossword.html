@@ -1,22 +1,29 @@
 {% extends "home.html" %}
 {% block content %}
-<table class="crossword">
-<tbody>
-{% for row in crossword %}
-    <tr class="crossword-row">
-    {% for char in row %}
-        {% if char == "" %}
-            <td class="crossword-cell empty">
-        {% else %}
-            <td class="crossword-cell">
-        {% endif %}
-            <span class="crossword-cell-label">
-                {{ char }}
-            </span>
-        </td>
-    {% endfor %}
-    </tr>
-{% endfor %}
-</tbody>
-</table>
+    <div class="component-wrapper">
+        <div class="col-lg-9 crossword-table-wrapper">
+            <table class="crossword-table">
+                <tbody>
+                {% for row in crossword %}
+                    <tr class="crossword-table-row">
+                    {% for char in row %}
+                        {% if char == "" %}
+                            <td class="crossword-table-cell empty">
+                        {% else %}
+                            <td class="crossword-table-cell">
+                        {% endif %}
+                            <span class="crossword-table-cell-label">
+                                {{ char }}
+                            </span>
+                        </td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-3 crossword-questions-wrapper">
+
+        </div>
+    </div>
 {% endblock %}

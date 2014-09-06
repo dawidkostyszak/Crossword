@@ -1,16 +1,11 @@
-* {
-  box-sizing: border-box; }
-
-.crossword {
-  table-layout: fixed;
-  background: #fff; }
-  .crossword .crossword-row .crossword-cell {
+.crossword-table {
+  table-layout: fixed; }
+  .crossword-table .crossword-table-row .crossword-table-cell {
     height: 45px;
     width: 45px;
     border: 2px solid black;
-    position: relative;
-    background: #FFFFFF; }
-    .crossword .crossword-row .crossword-cell .crossword-cell-label {
+    position: relative; }
+    .crossword-table .crossword-table-row .crossword-table-cell .crossword-table-cell-label {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -23,8 +18,11 @@
       display: block;
       font-size: 14px;
       font-weight: 600; }
-  .crossword .crossword-row .empty {
-    border: 0px;
-    background: #fff; }
+  .crossword-table .crossword-table-row .empty {
+    border: 0px; }
+
+.crossword-questions-wrapper {
+  height: 110px;
+  background: #999; }
 
 /*# sourceMappingURL=crossword.css.map */
