@@ -1,24 +1,37 @@
 @import "utils.scss";
 $cell-height: 45px;
 $component-name: crossword;
+$cell-background: #FFFFFF;
+$crossword-background: #fff;
 
+*{
+  box-sizing: border-box;
+}
 .#{$component-name}{
   table-layout: fixed;
+  background: $crossword-background;
+
   .#{$component-name}-row{
+
     .#{$component-name}-cell{
       height: $cell-height;
       width: $cell-height;
       border: 2px solid black;
       position: relative;
-      padding-top: 10px;
-      padding-left: 10px;
-      .#{$component-name}-cell-span{
+      background: $cell-background;
+
+      .#{$component-name}-cell-label{
+        @include centre();
+
+        overflow: hidden;
+        display: block;
         font-size: 14px;
         font-weight: 600;
       }
     }
     .empty{
       border: 0px;
+      background: $crossword-background;
     }
   }
 }
