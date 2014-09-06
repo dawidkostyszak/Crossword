@@ -1,3 +1,4 @@
+@import "utils.scss";
 $cell-height: 45px;
 $component-name: crossword;
 
@@ -15,6 +16,9 @@ $component-name: crossword;
         font-size: 14px;
         font-weight: 600;
       }
+    }
+    .empty{
+      border: 0px;
     }
   }
 }

@@ -28,7 +28,7 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
         result = []
         for char in word:
             words = list(self.model.objects.filter(
-                name__contains=char
+                name__icontains=char
             ).exclude(
                 name=word
             ))
@@ -42,10 +42,11 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
 
                 words.remove(word_to_add)
                 if not word_to_add.name.upper() in [r[0] for r in result]:
+                    name = word_to_add.name.upper()
                     result.append(
                         (
-                            word_to_add.name.upper(),
-                            word_to_add.name.index(char)
+                            name,
+                            name.index(char.upper())
                         )
                     )
                     break
@@ -55,8 +56,8 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
     def format_crossword(self, crossword):
         result = []
         intendation = max([word[1] for word in crossword])
-        for row, _ in crossword:
-            column_to_add = ['' for i in range(intendation)]
+        for row, index in crossword:
+            column_to_add = ['' for i in range(intendation - index)]
             column_to_add.extend([r for r in row])
             result.append(column_to_add)
 

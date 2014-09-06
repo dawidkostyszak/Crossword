@@ -5,7 +5,11 @@
 {% for row in crossword %}
     <tr class="crossword-row">
     {% for char in row %}
-        <td class="crossword-cell">
+        {% if char == "" %}
+            <td class="crossword-cell empty">
+        {% else %}
+            <td class="crossword-cell">
+        {% endif %}
             <span class="crossword-cell-label">
                 {{ char }}
             </span>

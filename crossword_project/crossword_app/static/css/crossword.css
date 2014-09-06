@@ -10,5 +10,7 @@
     .crossword .crossword-row .crossword-cell .crossword-cell-span {
       font-size: 14px;
       font-weight: 600; }
+  .crossword .crossword-row .empty {
+    border: 0px; }
 
 /*# sourceMappingURL=crossword.css.map */
