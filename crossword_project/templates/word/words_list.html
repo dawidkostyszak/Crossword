@@ -4,26 +4,44 @@
 	<div>
      <a href="{% url "add_word" %}"><button>Add word</button></a>
     <br/>
-    Istniejące słowa:
-	{% for word in words %}
-		<div>
-            {{ word.name }}
-            {{ word.question }}
-            {{ word.question.categories }}
-        </div>
-	{% endfor %}
+    <a href="{% url "crossword" %}"><button>Wygeneruj lipna krzyzowke</button></a>
+    <br/>
+    <table>
+    <th>
+        Istniejące słowa:
+    </th>
+    <tr>
+        <td>Name</td>
+        <td>Question</td>
+        <td>Categories</td>
+    </tr>
+    {% for word in words %}
+        <tr>
+            <td>{{ word.name }}</td>
+            <td>{{ word.question }}</td>
+            <td>{{ word.question.categories }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 	</div>
 
     <div>
-    </br>Istniejące pytania:
+    <table>
+    <th>
+        Istniejące pytania:
+    </th>
+    <tr>
+        <td>Question</td>
+        <td>Categories</td>
+    </tr>
 	{% for question in questions %}
-		<div>
-            {{ question.question }}
-            {{ question.categories }}
-        </div>
+		<tr>
+            <td>{{ question.question }}</td>
+            <td>{{ question.categories }}</td>
+        </tr>
 	{% endfor %}
     <br/>
-
+    </table>
 	</div>
 
 {% endblock %}
