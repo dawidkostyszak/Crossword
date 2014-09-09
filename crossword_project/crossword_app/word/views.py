@@ -39,7 +39,7 @@ class WordAdd(LoginRequiredMixin, FormView):
                 word_name = data['name']
                 question, question_exist = Question.objects.get_or_create(
                     question=data['question'],
-                    categories=data['category']
+                    difficulty=data['difficulty']
                 )
                 if not question_exist:
                     question.save()
@@ -48,7 +48,6 @@ class WordAdd(LoginRequiredMixin, FormView):
 
                 word = Word(
                     name=word_name,
-                    length=len(word_name),
                     question=question
                 )
                 question.word_set.add(word)

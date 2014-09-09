@@ -7,47 +7,47 @@
     </div>
 
     <div class="generate_crossword">
-        Podaj slowo glowne: <input name="word" placeholder="Put main word">
+        Put main word: <input name="word" placeholder="Put main word">
         <a href="{% url "crossword" %}">
-            <button class="btn btn-success">Wygeneruj lipna krzyzowke</button>
+            <button class="btn btn-success">Generate crossword</button>
         </a>
     </div>
 
 {% endblock %}
 {% block content %}
 	<div>
-        <table id="word-table">
+        <table id="words-table">
             <caption>
-                Istniejące słowa:
+                Existing words:
             </caption>
             <tr>
                 <th>Name</th>
                 <th>Questions</th>
-                <th>Categories</th>
+                <th>Questions difficulty</th>
             </tr>
             {% for word in words %}
                 <tr>
                     <td>{{ word.name }}</td>
                     <td>{{ word.question }}</td>
-                    <td>{{ word.question.categories }}</td>
+                    <td>{{ word.question.difficulty }}</td>
                 </tr>
             {% endfor %}
             </table>
             </div>
 
             <div>
-            <table id="category-table">
+            <table id="questions-table">
             <caption>
-                Istniejące pytania:
+                Existing questions:
             </caption>
             <tr>
                 <th>Question</th>
-                <th>Categories</th>
+                <th>Difficulty</th>
             </tr>
             {% for question in questions %}
                 <tr>
                     <td>{{ question.question }}</td>
-                    <td>{{ question.categories }}</td>
+                    <td>{{ question.difficulty }}</td>
                 </tr>
             {% endfor %}
         </table>

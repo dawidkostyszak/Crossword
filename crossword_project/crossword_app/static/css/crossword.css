@@ -29,10 +29,10 @@
     height: 110px;
     background: #999; }
 
-#word-table, #category-table {
+#words-table, #questions-table {
   width: 100%;
   table-layout: fixed; }
-  #word-table caption, #category-table caption {
+  #words-table caption, #questions-table caption {
     font-weight: 700;
     font-size: 24px; }
 

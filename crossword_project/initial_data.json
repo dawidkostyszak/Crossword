@@ -1,6 +1,15 @@
 [
   {
     "pk": 1,
+    "model": "south.migrationhistory",
+    "fields": {
+      "applied": "2014-09-09T16:38:40.234Z",
+      "app_name": "word",
+      "migration": "0001_initial"
+    }
+  },
+  {
+    "pk": 1,
     "model": "contenttypes.contenttype",
     "fields": {
       "model": "migrationhistory",
@@ -66,8 +75,8 @@
     "pk": 8,
     "model": "contenttypes.contenttype",
     "fields": {
-      "model": "category",
-      "name": "category",
+      "model": "difficulty",
+      "name": "difficulty",
       "app_label": "word"
     }
   },
@@ -90,74 +99,74 @@
     }
   },
   {
-    "pk": "t0nx91ptg25i445fcwz4u5myd4qfrfa3",
+    "pk": "xjf5xqtf2b81ing852leas2w8ofldn3d",
     "model": "sessions.session",
     "fields": {
-      "expire_date": "2014-06-21T20:22:01.995Z",
+      "expire_date": "2014-09-23T16:40:00.556Z",
       "session_data": "YjZhNjAwMmJkZjc2MDkxM2MxNGE4NmEwMGI1OWU5Mjk4NzRlNTIyMDp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
     }
   },
   {
     "pk": 1,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "Basic"
+      "difficulty": 1
     }
   },
   {
     "pk": 2,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "Animals"
+      "difficulty": 2
     }
   },
   {
     "pk": 3,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "Sport"
+      "difficulty": 3
     }
   },
   {
     "pk": 4,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "Book"
+      "difficulty": 4
     }
   },
   {
     "pk": 5,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "Music"
+      "difficulty": 5
     }
   },
   {
     "pk": 6,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "Politics"
+      "difficulty": 6
     }
   },
   {
     "pk": 7,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "Video"
+      "difficulty": 7
     }
   },
   {
     "pk": 8,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "History"
+      "difficulty": 8
     }
   },
   {
     "pk": 9,
-    "model": "word.category",
+    "model": "word.difficulty",
     "fields": {
-      "category": "People"
+      "difficulty": 9
     }
   },
   {
@@ -353,8 +362,8 @@
     "pk": 22,
     "model": "auth.permission",
     "fields": {
-      "codename": "add_category",
-      "name": "Can add category",
+      "codename": "add_difficulty",
+      "name": "Can add difficulty",
       "content_type": 8
     }
   },
@@ -362,8 +371,8 @@
     "pk": 23,
     "model": "auth.permission",
     "fields": {
-      "codename": "change_category",
-      "name": "Can change category",
+      "codename": "change_difficulty",
+      "name": "Can change difficulty",
       "content_type": 8
     }
   },
@@ -371,8 +380,8 @@
     "pk": 24,
     "model": "auth.permission",
     "fields": {
-      "codename": "delete_category",
-      "name": "Can delete category",
+      "codename": "delete_difficulty",
+      "name": "Can delete difficulty",
       "content_type": 8
     }
   },
@@ -440,16 +449,16 @@
       "is_active": true,
       "is_superuser": true,
       "is_staff": true,
-      "last_login": "2014-06-07T20:22:01.981Z",
+      "last_login": "2014-09-09T16:40:00.544Z",
       "groups": [
         
       ],
       "user_permissions": [
         
       ],
-      "password": "pbkdf2_sha256$12000$CN6tuj1ZM4Jq$vvVAtF1SgU312zWMwR9YWu68OZTvREB8RqdNPND4K30=",
+      "password": "pbkdf2_sha256$12000$V1r4k8mZmvxN$g5jSjUHtA7fcNLwReXi9Z\/R051+XG\/aB7p6JmfxxvMk=",
       "email": "",
-      "date_joined": "2014-06-07T20:21:36.158Z"
+      "date_joined": "2014-09-09T16:38:07.037Z"
     }
   },
   {
@@ -457,8 +466,8 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:22:32.612Z",
-      "object_repr": "Basic",
+      "action_time": "2014-09-09T16:40:42.072Z",
+      "object_repr": "Difficulty object",
       "object_id": "1",
       "change_message": "",
       "user": 1,
@@ -469,10 +478,10 @@
     "pk": 2,
     "model": "admin.logentry",
     "fields": {
-      "action_flag": 1,
-      "action_time": "2014-06-07T20:22:38.936Z",
-      "object_repr": "Animals",
-      "object_id": "2",
+      "action_flag": 3,
+      "action_time": "2014-09-09T16:40:50.871Z",
+      "object_repr": "Difficulty object",
+      "object_id": "1",
       "change_message": "",
       "user": 1,
       "content_type": 8
@@ -483,9 +492,9 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:22:47.454Z",
-      "object_repr": "Sport",
-      "object_id": "3",
+      "action_time": "2014-09-09T16:41:14.078Z",
+      "object_repr": "1",
+      "object_id": "1",
       "change_message": "",
       "user": 1,
       "content_type": 8
@@ -496,9 +505,9 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:23:09.560Z",
-      "object_repr": "Book",
-      "object_id": "4",
+      "action_time": "2014-09-09T16:41:15.643Z",
+      "object_repr": "2",
+      "object_id": "2",
       "change_message": "",
       "user": 1,
       "content_type": 8
@@ -509,9 +518,9 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:23:14.293Z",
-      "object_repr": "Music",
-      "object_id": "5",
+      "action_time": "2014-09-09T16:41:16.706Z",
+      "object_repr": "3",
+      "object_id": "3",
       "change_message": "",
       "user": 1,
       "content_type": 8
@@ -522,9 +531,9 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:23:54.009Z",
-      "object_repr": "Politics",
-      "object_id": "6",
+      "action_time": "2014-09-09T16:41:18.539Z",
+      "object_repr": "4",
+      "object_id": "4",
       "change_message": "",
       "user": 1,
       "content_type": 8
@@ -535,9 +544,9 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:23:59.821Z",
-      "object_repr": "Video",
-      "object_id": "7",
+      "action_time": "2014-09-09T16:41:19.477Z",
+      "object_repr": "5",
+      "object_id": "5",
       "change_message": "",
       "user": 1,
       "content_type": 8
@@ -548,9 +557,9 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:24:09.236Z",
-      "object_repr": "History",
-      "object_id": "8",
+      "action_time": "2014-09-09T16:41:20.459Z",
+      "object_repr": "6",
+      "object_id": "6",
       "change_message": "",
       "user": 1,
       "content_type": 8
@@ -561,8 +570,34 @@
     "model": "admin.logentry",
     "fields": {
       "action_flag": 1,
-      "action_time": "2014-06-07T20:24:14.911Z",
-      "object_repr": "People",
+      "action_time": "2014-09-09T16:41:21.870Z",
+      "object_repr": "7",
+      "object_id": "7",
+      "change_message": "",
+      "user": 1,
+      "content_type": 8
+    }
+  },
+  {
+    "pk": 10,
+    "model": "admin.logentry",
+    "fields": {
+      "action_flag": 1,
+      "action_time": "2014-09-09T16:41:23.005Z",
+      "object_repr": "8",
+      "object_id": "8",
+      "change_message": "",
+      "user": 1,
+      "content_type": 8
+    }
+  },
+  {
+    "pk": 11,
+    "model": "admin.logentry",
+    "fields": {
+      "action_flag": 1,
+      "action_time": "2014-09-09T16:41:23.856Z",
+      "object_repr": "9",
       "object_id": "9",
       "change_message": "",
       "user": 1,
