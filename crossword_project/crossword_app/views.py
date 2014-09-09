@@ -70,15 +70,18 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
 
     def format_crossword(self, crossword):
         result = []
+        questions = []
         intendation = max([word[1] for word in crossword['result']])
-        for row, index, _ in crossword['result']:
+        for row, index, question in crossword['result']:
             column_to_add = [('', False) for i in range(intendation - index)]
             column_to_add.extend(
                 [(row[r],  r == index) for r in range(row.__len__())]
             )
             result.append(column_to_add)
+            questions.append(question)
 
         crossword['result'] = result
+        crossword['questions'] = questions
         return crossword
 
     def post(self, request, *args, **kwargs):

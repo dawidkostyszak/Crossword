@@ -17,6 +17,7 @@
                 <tbody>
                 {% for row in crossword.result %}
                     <tr class="crossword-table-row">
+                    {{ forloop.counter }}
                     {% for char, is_result in row %}
 
                             <td class="crossword-table-cell{% if char == "" %} empty{% endif %} {% if is_result %} result{% endif %}">
@@ -31,7 +32,9 @@
             </table>
         </div>
         <div class="col-lg-3 crossword-questions-wrapper">
-
+            {% for question in crossword.questions %}
+                <div>{{ forloop.counter }}{{ question.question }}</div>
+            {% endfor %}
         </div>
     </div>
 {% else %}
