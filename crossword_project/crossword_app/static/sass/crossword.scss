@@ -15,7 +15,6 @@ $component-name: crossword;
       border: 2px solid black;
       position: relative;
 
-
       .#{$component-name}-table-cell-label{
         @include centre();
         overflow: hidden;
@@ -32,7 +31,6 @@ $component-name: crossword;
       .#{$component-name}-table-cell-label{
         font-weight: 700;
       }
-    ;
     }
   }
 }
@@ -41,16 +39,41 @@ $component-name: crossword;
       background: #999;
   }
 }
+.table-wrapper{
+  padding: 10px;
+  .#{$component-name}-table-ingridients{
+    table-layout: fixed;
+    width: 100%;
+    border-bottom: 1px solid #47a447;
+    max-height: 500px;
+    overflow: auto;
+    caption{
+      text-align: left;
+      padding: 3px;
+      font-weight: 700;
+      font-size: 20px;
+      background: #e7e7e7;
+      border-bottom: 1px solid #47a447;
+    }
+    th{
+      background: #449d44;
+      border-bottom: 1px solid #47a447;
+      color: #ffffff;
+      text-align: center;
+    }
+    .crossword-table-ingridients-words{
+      background: #fbfbfb;
+      td{
 
-#word-table, #category-table {
-  caption {
-    font-weight: 700;
-    font-size: 24px;
+        padding-left: 25px;
+
+      }
+      &:nth-child(2n){
+          background: #f8f8f8;
+        }
+    }
   }
-  width: 100%;
-  table-layout: fixed;
 }
-
 .navigation {
   height: 50px;
   background: lightgrey;

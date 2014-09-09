@@ -15,8 +15,8 @@
 
 {% endblock %}
 {% block content %}
-	<div>
-        <table id="word-table">
+	<div class="table-wrapper">
+        <table class="crossword-table-ingridients">
             <caption>
                 Istniejące słowa:
             </caption>
@@ -26,7 +26,7 @@
                 <th>Categories</th>
             </tr>
             {% for word in words %}
-                <tr>
+                <tr class="crossword-table-ingridients-words">
                     <td>{{ word.name }}</td>
                     <td>{{ word.question }}</td>
                     <td>{{ word.question.categories }}</td>
@@ -35,8 +35,8 @@
             </table>
             </div>
 
-            <div>
-            <table id="category-table">
+            <div class="table-wrapper">
+            <table class="crossword-table-ingridients">
             <caption>
                 Istniejące pytania:
             </caption>
@@ -45,7 +45,7 @@
                 <th>Categories</th>
             </tr>
             {% for question in questions %}
-                <tr>
+                <tr class="crossword-table-ingridients-words">
                     <td>{{ question.question }}</td>
                     <td>{{ question.categories }}</td>
                 </tr>
