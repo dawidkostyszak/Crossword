@@ -54,16 +54,25 @@ $component-name: crossword;
 .navigation {
   height: 50px;
   background: lightgrey;
-  .add_word, .generate_crossword {
+  .left_navigation, .right_navigation {
     margin-top: 8px;
     text-decoration: none;
   }
-  .add_word {
+  .left_navigation {
     float: left;
     margin-left: 30px;
   }
-  .generate_crossword {
+  .right_navigation {
     float: right;
     margin-right: 30px;
   }
+}
+li {
+  list-style: none;
+}
+.errorlist {
+  color: red;
+}
+.hidden {
+  display: none !important;
 }

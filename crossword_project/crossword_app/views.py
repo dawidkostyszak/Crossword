@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
-from crossword_project.crossword_app.word.models import Word
+from word.models import Word
 
 
 class HomepageView(TemplateView):
@@ -25,11 +25,12 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
     template_name = "generate_crossword.html"
     model = Word
 
-    def generate_crossword(self, word, max_loop=100):
+    def generate_crossword(self, word, difficulty, max_loop=100):
         result = []
         for char in word:
             words = list(self.model.objects.filter(
-                name__icontains=char
+                name__icontains=char,
+                question__difficulty=difficulty
             ).exclude(
                 name__iexact=word
             ))
@@ -43,7 +44,11 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
                             "success": False,
                             "result": "Can't generate crossword"
                         }
-                    result = self.generate_crossword(word, max_loop=max_loop-1)
+                    result = self.generate_crossword(
+                        word,
+                        difficulty,
+                        max_loop=max_loop-1
+                    )
                     return result
 
                 words.remove(word_to_add)
@@ -76,13 +81,33 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
         crossword['result'] = result
         return crossword
 
-    def get(self, request, *args, **kwargs):
-        crossword_result = self.generate_crossword('kazio')
+    def post(self, request, *args, **kwargs):
+        word = request.POST.get('word', None)
+        difficulty = request.POST.get('difficulty', None)
+        if not word or not difficulty:
+            return render(
+                request,
+                self.template_name,
+                {
+                    'crossword': {
+                        'success': False,
+                        'result': 'Please put word and difficulty to generate '
+                                  'crossword'
+                    },
+                    'word': word
+                }
+            )
+
+        crossword_result = self.generate_crossword(word, difficulty)
         if crossword_result['success']:
             crossword_result = self.format_crossword(crossword_result)
 
         return render(
             request,
             self.template_name,
-            {'crossword': crossword_result}
+            {
+                'crossword': crossword_result,
+                'word': word,
+                'difficulty': difficulty
+            }
         )

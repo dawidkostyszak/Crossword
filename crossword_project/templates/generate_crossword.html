@@ -1,4 +1,14 @@
 {% extends "home.html" %}
+{% block navigation %}
+{% if crossword.success %}
+<form class="left_navigation" action="{% url 'crossword' %}" method="post">
+    {% csrf_token %}
+    <input class="hidden" name="word" value="{{ word }}">
+    <input class="hidden" name="difficulty" value="{{ difficulty }}">
+    <input class="btn btn-success" type="submit" value="Generate crossword again" />
+</form>
+{% endif %}
+{% endblock %}
 {% block content %}
 {% if crossword.success %}
     <div class="component-wrapper col-lg-12">

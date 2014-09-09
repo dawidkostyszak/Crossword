@@ -39,12 +39,21 @@
 .navigation {
   height: 50px;
   background: lightgrey; }
-  .navigation .add_word, .navigation .generate_crossword {
+  .navigation .left_navigation, .navigation .right_navigation {
     margin-top: 8px;
     text-decoration: none; }
-  .navigation .add_word {
+  .navigation .left_navigation {
     float: left;
     margin-left: 30px; }
-  .navigation .generate_crossword {
+  .navigation .right_navigation {
     float: right;
     margin-right: 30px; }
+
+li {
+  list-style: none; }
+
+.errorlist {
+  color: red; }
+
+.hidden {
+  display: none !important; }
