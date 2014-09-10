@@ -1,10 +1,21 @@
 {% extends "home.html" %}
 
 {% block content %}
-
-	<form action="" method="post">{% csrf_token %}
-		{{ form.as_ul }}
-		<input type="submit" value="Create" />
-	</form>
-	
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="fieldWrapper">
+            <label>{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <ol class="errorlist">
+                {% for error in field.errors %}
+                    <li><strong>{{ error|escape }}</strong></li>
+                {% endfor %}
+                </ol>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Create" />
+    </form>
 {% endblock %}

@@ -41,13 +41,13 @@ $component-name: crossword;
 }
 .table-wrapper{
   padding: 10px;
-  .#{$component-name}-table-ingridients{
+  .#{$component-name}-table-ingridients {
     table-layout: fixed;
     width: 100%;
     border-bottom: 1px solid #47a447;
     max-height: 500px;
     overflow: auto;
-    caption{
+    caption {
       text-align: left;
       padding: 3px;
       font-weight: 700;
@@ -55,38 +55,54 @@ $component-name: crossword;
       background: #e7e7e7;
       border-bottom: 1px solid #47a447;
     }
-    th{
+    th {
       background: #449d44;
       border-bottom: 1px solid #47a447;
       color: #ffffff;
       text-align: center;
     }
-    .crossword-table-ingridients-words{
+    .crossword-table-ingridients-words {
       background: #fbfbfb;
-      td{
+      td {
 
         padding-left: 25px;
 
       }
-      &:nth-child(2n){
-          background: #f8f8f8;
-        }
+      &:nth-child(2n) {
+        background: #f8f8f8;
+      }
     }
+  }
+}
+#words-table, #questions-table {
+  caption {
+    font-weight: 700;
+    font-size: 24px;
   }
 }
 .navigation {
   height: 50px;
   background: lightgrey;
-  .add_word, .generate_crossword {
+  .left_navigation, .right_navigation {
     margin-top: 8px;
     text-decoration: none;
   }
-  .add_word {
+  .left_navigation {
     float: left;
     margin-left: 30px;
   }
-  .generate_crossword {
+  .right_navigation {
     float: right;
     margin-right: 30px;
   }
+}
+li {
+  list-style: none;
+}
+.errorlist {
+  color: red;
+}
+
+.hidden {
+  display: none !important;
 }

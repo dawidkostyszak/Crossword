@@ -5,22 +5,20 @@ from django.shortcuts import render
 from ..views import LoginRequiredMixin
 from models import Word, Question
 from form import WordForm
+from ..form import CrosswordForm
 from django.views.generic import FormView, ListView
 
 
 class WordList(ListView):
     template_name = "word/words_list.html"
     model = Word
+    form_class = CrosswordForm
 
     def get_context_data(self, **kwargs):
-        # self.model.objects.filter(
-        #   question__in=Question.objects.filter(
-        #       categories=Category.objects.get(category='Basic')
-        #   )
-        # )
         context = super(WordList, self).get_context_data(**kwargs)
         context['words'] = self.model.objects.all()
         context['questions'] = Question.objects.all()
+        context['form'] = self.form_class()
         return context
 
 
@@ -39,16 +37,13 @@ class WordAdd(LoginRequiredMixin, FormView):
                 word_name = data['name']
                 question, question_exist = Question.objects.get_or_create(
                     question=data['question'],
-                    categories=data['category']
+                    difficulty=data['difficulty']
                 )
                 if not question_exist:
                     question.save()
 
-                # question.categories.add(data['category'])
-
                 word = Word(
                     name=word_name,
-                    length=len(word_name),
                     question=question
                 )
                 question.word_set.add(word)

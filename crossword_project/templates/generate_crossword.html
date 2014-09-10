@@ -1,4 +1,14 @@
 {% extends "home.html" %}
+{% block navigation %}
+{% if crossword.success %}
+<form class="left_navigation" action="{% url 'crossword' %}" method="post">
+    {% csrf_token %}
+    <input class="hidden" name="word" value="{{ word }}">
+    <input class="hidden" name="difficulty" value="{{ difficulty }}">
+    <input class="btn btn-success" type="submit" value="Generate crossword again" />
+</form>
+{% endif %}
+{% endblock %}
 {% block content %}
 {% if crossword.success %}
     <div class="component-wrapper col-lg-12">
@@ -7,6 +17,7 @@
                 <tbody>
                 {% for row in crossword.result %}
                     <tr class="crossword-table-row">
+                    {{ forloop.counter }}
                     {% for char, is_result in row %}
 
                             <td class="crossword-table-cell{% if char == "" %} empty{% endif %} {% if is_result %} result{% endif %}">
@@ -21,7 +32,9 @@
             </table>
         </div>
         <div class="col-lg-3 crossword-questions-wrapper">
-
+            {% for question in crossword.questions %}
+                <div>{{ forloop.counter }}{{ question.question }}</div>
+            {% endfor %}
         </div>
     </div>
 {% else %}

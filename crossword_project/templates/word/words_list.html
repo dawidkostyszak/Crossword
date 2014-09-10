@@ -1,56 +1,66 @@
 {% extends "home.html" %}
 {% block navigation %}
-    <div class="add_word">
+    <div class="left_navigation">
         <a href="{% url "add_word" %}">
             <button class="btn btn-success">Add word</button>
         </a>
     </div>
 
-    <div class="generate_crossword">
-        Podaj slowo glowne: <input name="word" placeholder="Put main word">
-        <a href="{% url "crossword" %}">
-            <button class="btn btn-success">Wygeneruj lipna krzyzowke</button>
-        </a>
-    </div>
+    <form class="right_navigation" action="{% url 'crossword' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input class="btn btn-success" type="submit" value="Generate crossword" />
+    </form>
 
 {% endblock %}
 {% block content %}
 	<div class="table-wrapper">
         <table class="crossword-table-ingridients">
+    <div>
+        <table id="words-table">
             <caption>
-                Istniejące słowa:
+                Existing words:
             </caption>
             <tr>
                 <th>Name</th>
                 <th>Questions</th>
-                <th>Categories</th>
+                <th>Questions difficulty</th>
             </tr>
             {% for word in words %}
                 <tr class="crossword-table-ingridients-words">
                     <td>{{ word.name }}</td>
                     <td>{{ word.question }}</td>
-                    <td>{{ word.question.categories }}</td>
+                    <td>{{ word.question.difficulty }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No existing words.</td>
                 </tr>
             {% endfor %}
-            </table>
-            </div>
-
+        </table>
+    </div>
             <div class="table-wrapper">
-            <table class="crossword-table-ingridients">
+            <table class="crossword-table-ingridients"></table>
+    <div>
+        <table id="questions-table">
             <caption>
-                Istniejące pytania:
+                Existing questions:
             </caption>
             <tr>
                 <th>Question</th>
-                <th>Categories</th>
+                <th>Difficulty</th>
             </tr>
             {% for question in questions %}
                 <tr class="crossword-table-ingridients-words">
                     <td>{{ question.question }}</td>
-                    <td>{{ question.categories }}</td>
+                    <td>{{ question.difficulty }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No existing questions.</td>
                 </tr>
             {% endfor %}
         </table>
-	</div>
+    </div>
 
 {% endblock %}
