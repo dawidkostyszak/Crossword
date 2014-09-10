@@ -64,20 +64,15 @@ $component-name: crossword;
     .crossword-table-ingridients-words {
       background: #fbfbfb;
       td {
-
         padding-left: 25px;
-
+        &.difficulty {
+          text-align: center;
+        }
       }
       &:nth-child(2n) {
         background: #f8f8f8;
       }
     }
-  }
-}
-#words-table, #questions-table {
-  caption {
-    font-weight: 700;
-    font-size: 24px;
   }
 }
 .navigation {

@@ -11,13 +11,11 @@
         {{ form }}
         <input class="btn btn-success" type="submit" value="Generate crossword" />
     </form>
-
 {% endblock %}
+
 {% block content %}
-	<div class="table-wrapper">
+    <div class="table-wrapper">
         <table class="crossword-table-ingridients">
-    <div>
-        <table id="words-table">
             <caption>
                 Existing words:
             </caption>
@@ -30,7 +28,7 @@
                 <tr class="crossword-table-ingridients-words">
                     <td>{{ word.name }}</td>
                     <td>{{ word.question }}</td>
-                    <td>{{ word.question.difficulty }}</td>
+                    <td class="difficulty">{{ word.question.difficulty }}</td>
                 </tr>
             {% empty %}
                 <tr>
@@ -39,28 +37,25 @@
             {% endfor %}
         </table>
     </div>
-            <div class="table-wrapper">
-            <table class="crossword-table-ingridients"></table>
-    <div>
-        <table id="questions-table">
+    <div class="table-wrapper">
+        <table class="crossword-table-ingridients">
             <caption>
-                Existing questions:
-            </caption>
-            <tr>
-                <th>Question</th>
-                <th>Difficulty</th>
-            </tr>
-            {% for question in questions %}
-                <tr class="crossword-table-ingridients-words">
-                    <td>{{ question.question }}</td>
-                    <td>{{ question.difficulty }}</td>
-                </tr>
-            {% empty %}
+                    Existing questions:
+                </caption>
                 <tr>
-                    <td colspan="3">No existing questions.</td>
+                    <th>Question</th>
+                    <th>Difficulty</th>
                 </tr>
-            {% endfor %}
+                {% for question in questions %}
+                    <tr class="crossword-table-ingridients-words">
+                        <td>{{ question.question }}</td>
+                        <td class="difficulty">{{ question.difficulty }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">No existing questions.</td>
+                    </tr>
+                {% endfor %}
         </table>
     </div>
-
 {% endblock %}

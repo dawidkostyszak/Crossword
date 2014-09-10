@@ -53,12 +53,10 @@
       background: #fbfbfb; }
       .table-wrapper .crossword-table-ingridients .crossword-table-ingridients-words td {
         padding-left: 25px; }
+        .table-wrapper .crossword-table-ingridients .crossword-table-ingridients-words td.difficulty {
+          text-align: center; }
       .table-wrapper .crossword-table-ingridients .crossword-table-ingridients-words:nth-child(2n) {
         background: #f8f8f8; }
-
-#words-table caption, #questions-table caption {
-  font-weight: 700;
-  font-size: 24px; }
 
 .navigation {
   height: 50px;
@@ -81,5 +79,3 @@ li {
 
 .hidden {
   display: none !important; }
-
-/*# sourceMappingURL=crossword.css.map */
