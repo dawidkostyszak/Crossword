@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
-from word.models import Word
+from word.models import Word, Question
 
 
 class HomepageView(TemplateView):
@@ -28,12 +28,12 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
     def generate_crossword(self, word, difficulty, max_loop=100):
         result = []
         for char in word:
-            words = list(self.model.objects.filter(
+            words = self.model.objects.filter(
                 name__icontains=char,
                 question__difficulty=difficulty
             ).exclude(
                 name__iexact=word
-            ))
+            ).order_by('?')[:1000].values_list('name', 'question')
 
             while True:
                 if words:
@@ -51,14 +51,14 @@ class CrosswordGenerate(LoginRequiredMixin, TemplateView):
                     )
                     return result
 
-                words.remove(word_to_add)
-                if not word_to_add.name.upper() in [r[0] for r in result]:
-                    name = word_to_add.name.upper()
+                # words.remove(word_to_add)
+                name = word_to_add[0].upper()
+                if not name in [r[0] for r in result]:
                     result.append(
                         (
                             name,
                             name.index(char.upper()),
-                            word_to_add.question
+                            Question.objects.get(id=word_to_add[1]).question
                         )
                     )
                     break

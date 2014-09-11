@@ -17,12 +17,9 @@ class WordList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(WordList, self).get_context_data(**kwargs)
-        count_words = self.model.objects.all().count()
-        count_question = Question.objects.all().count()
-        rand_ids_word = sample(xrange(1, count_words), 20)
-        rand_ids_question = sample(xrange(1, count_question), 20)
-        context['words'] = self.model.objects.filter(id__in=rand_ids_word)
-        context['questions'] = Question.objects.filter(id__in=rand_ids_question)
+        context['words'] = self.model.objects.all().order_by('?')[:20]
+        context['questions'] = Question.objects.all().order_by('?')[:20]
+        context['form'] = self.form_class()
         return context
 
 
