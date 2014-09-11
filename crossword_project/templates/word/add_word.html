@@ -1,11 +1,16 @@
 {% extends "home.html" %}
 
 {% block content %}
-    <form action="" method="post">
+    <form action="" method="post" class="crossword-add-word-form">
         {% csrf_token %}
         {% for field in form %}
-        <div class="fieldWrapper">
-            <label>{{ field.label }}</label>
+        <div class="crossword-add-word-form-field-wrapper">
+
+            <div class="crossword-add-word-form-field-label-caption">
+                <label class="crossword-add-word-form-field-label-caption" >
+                    {{ field.label }}
+                </label>
+            </div>
             {{ field }}
             {% if field.errors %}
                 <ol class="errorlist">
@@ -16,6 +21,6 @@
             {% endif %}
         </div>
         {% endfor %}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Create" class="crossword-add-word-form-submit-button" />
     </form>
 {% endblock %}

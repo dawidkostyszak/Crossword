@@ -6,6 +6,7 @@ from ..views import LoginRequiredMixin
 from models import Word, Question
 from form import WordForm
 from ..form import CrosswordForm
+from random import sample
 from django.views.generic import FormView, ListView
 
 
@@ -16,9 +17,12 @@ class WordList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(WordList, self).get_context_data(**kwargs)
-        context['words'] = self.model.objects.all()
-        context['questions'] = Question.objects.all()
-        context['form'] = self.form_class()
+        count_words = self.model.objects.all().count()
+        count_question = Question.objects.all().count()
+        rand_ids_word = sample(xrange(1, count_words), 20)
+        rand_ids_question = sample(xrange(1, count_question), 20)
+        context['words'] = self.model.objects.filter(id__in=rand_ids_word)
+        context['questions'] = Question.objects.filter(id__in=rand_ids_question)
         return context
 
 
