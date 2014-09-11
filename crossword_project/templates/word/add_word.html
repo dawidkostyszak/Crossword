@@ -1,5 +1,13 @@
 {% extends "home.html" %}
-
+{% block navigation %}
+{% if user.is_authenticated %}
+    <div class="left_navigation">
+        <a href="{% url "words_list" %}">
+            <button class="btn btn-success">Words list</button>
+        </a>
+    </div>
+{% endif %}
+{% endblock %}
 {% block content %}
     <form action="" method="post" class="crossword-add-word-form">
         {% csrf_token %}

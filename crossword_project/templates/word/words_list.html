@@ -1,5 +1,7 @@
 {% extends "home.html" %}
+{% load staticfiles %}
 {% block navigation %}
+{% if user.is_authenticated %}
     <div class="left_navigation">
         <a href="{% url "add_word" %}">
             <button class="btn btn-success">Add word</button>
@@ -11,9 +13,12 @@
         {{ form }}
         <input class="btn btn-success" type="submit" value="Generate crossword" />
     </form>
+{% endif %}
 {% endblock %}
 
 {% block content %}
+    <button id="prev" class="btn btn-success" offset="0" url="{% url 'words_list' %}">Prev</button>
+    <button id="next" class="btn btn-success" limit="20" url="{% url 'words_list' %}">Next</button>
     <div class="table-wrapper">
         <table class="crossword-table-ingridients">
             <caption>

@@ -1,12 +1,24 @@
 {% extends "home.html" %}
 {% block navigation %}
-{% if crossword.success %}
-<form class="left_navigation" action="{% url 'crossword' %}" method="post">
-    {% csrf_token %}
-    <input class="hidden" name="word" value="{{ word }}">
-    <input class="hidden" name="difficulty" value="{{ difficulty }}">
-    <input class="btn btn-success" type="submit" value="Generate crossword again" />
-</form>
+{% if user.is_authenticated %}
+    <div class="left_navigation">
+        <a href="{% url "add_word" %}">
+            <button class="btn btn-success">Add word</button>
+        </a>
+    </div>
+    <div class="left_navigation">
+        <a href="{% url "words_list" %}">
+            <button class="btn btn-success">Words list</button>
+        </a>
+    </div>
+    {% if crossword.success %}
+        <form class="right_navigation" action="{% url 'crossword' %}" method="post">
+            {% csrf_token %}
+            <input class="hidden" name="word" value="{{ word }}">
+            <input class="hidden" name="difficulty" value="{{ difficulty }}">
+            <input class="btn btn-success" type="submit" value="Generate crossword again" />
+        </form>
+    {% endif %}
 {% endif %}
 {% endblock %}
 {% block content %}

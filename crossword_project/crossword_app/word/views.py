@@ -16,9 +16,11 @@ class WordList(ListView):
     form_class = CrosswordForm
 
     def get_context_data(self, **kwargs):
+        offset = int(self.request.GET.get('offset', 0))
+        limit = int(self.request.GET.get('limit', 20))
         context = super(WordList, self).get_context_data(**kwargs)
-        context['words'] = self.model.objects.all().order_by('?')[:20]
-        context['questions'] = Question.objects.all().order_by('?')[:20]
+        context['words'] = self.model.objects.all().order_by('?')[offset:limit]
+        context['questions'] = Question.objects.all().order_by('?')[offset:limit]
         context['form'] = self.form_class()
         return context
 
