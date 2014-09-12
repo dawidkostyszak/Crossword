@@ -144,6 +144,8 @@ $component-name: crossword;
 .navigation {
   height: 50px;
   background: lightgrey;
+  margin-right: auto;
+margin-left: auto;
   .left_navigation, .right_navigation {
     margin-top: 8px;
     text-decoration: none;
@@ -155,6 +157,21 @@ $component-name: crossword;
   .right_navigation {
     float: right;
     margin-right: 30px;
+    input, textarea, select{
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      }
   }
 }
 li {
@@ -170,14 +187,16 @@ li {
 
 button#prev {
   float: left;
+  margin: 8px;
 }
 .paggination{
   @include centre(x);
   font-size: 18px;
   font-weight: 600;
-  margin-top: 5px;
+  margin-top: 14px;
 }
 
 button#next {
   float: right;
+  margin: 8px;
 }
