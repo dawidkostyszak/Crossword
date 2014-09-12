@@ -14,12 +14,12 @@
         {% for field in form %}
         <div class="crossword-add-word-form-field-wrapper">
 
-            <div class="crossword-add-word-form-field-label-caption">
+            <div class="crossword-add-word-form-field-label ">
                 <label class="crossword-add-word-form-field-label-caption" >
                     {{ field.label }}
                 </label>
             </div>
-            {{ field }}
+            <div class="crossword-add-word-form-field">{{ field }}</div>
             {% if field.errors %}
                 <ol class="errorlist">
                 {% for error in field.errors %}
@@ -29,6 +29,6 @@
             {% endif %}
         </div>
         {% endfor %}
-        <input type="submit" value="Create" class="crossword-add-word-form-submit-button" />
+        <input type="submit" value="Create" class="crossword-add-word-form-submit-button btn btn-success"  />
     </form>
 {% endblock %}

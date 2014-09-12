@@ -1,5 +1,6 @@
 .component-wrapper {
-  height: 100%; }
+  height: 100%;
+  margin-top: 20px; }
   .component-wrapper .crossword-table {
     table-layout: fixed; }
     .component-wrapper .crossword-table .crossword-table-row .crossword-table-cell {
@@ -19,6 +20,11 @@
         overflow: hidden;
         font-size: 14px;
         font-weight: 600; }
+    .component-wrapper .crossword-table .crossword-table-row .crossword-table-counter {
+      height: 45px;
+      width: 45px;
+      font-size: 14px;
+      font-weight: 700; }
     .component-wrapper .crossword-table .crossword-table-row .empty {
       border: 0px; }
     .component-wrapper .crossword-table .crossword-table-row .result {
@@ -26,8 +32,17 @@
       .component-wrapper .crossword-table .crossword-table-row .result .crossword-table-cell-label {
         font-weight: 700; }
   .component-wrapper .crossword-questions-wrapper {
-    height: 110px;
-    background: #999; }
+    margin-top: 15px;
+    padding: 15px; }
+    .component-wrapper .crossword-questions-wrapper h3 {
+      margin-top: 10px; }
+    .component-wrapper .crossword-questions-wrapper .crossword-question {
+      padding-left: 30px; }
+      .component-wrapper .crossword-questions-wrapper .crossword-question .crossword-question-counter,
+      .component-wrapper .crossword-questions-wrapper .crossword-question .crossword-question-label {
+        padding: 5px;
+        font-size: 14px;
+        font-weight: 600; }
 
 .table-wrapper {
   padding: 10px; }
@@ -58,6 +73,44 @@
       .table-wrapper .crossword-table-ingridients .crossword-table-ingridients-words:nth-child(2n) {
         background: #f8f8f8; }
 
+.crossword-add-word-form {
+  padding: 20px; }
+  .crossword-add-word-form .crossword-add-word-form-field-wrapper {
+    position: relative;
+    margin-bottom: 3px; }
+    .crossword-add-word-form .crossword-add-word-form-field-wrapper .crossword-add-word-form-field-label {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
+      .crossword-add-word-form .crossword-add-word-form-field-wrapper .crossword-add-word-form-field-label .crossword-add-word-form-field-label-caption {
+        display: inline-block; }
+    .crossword-add-word-form .crossword-add-word-form-field-wrapper .crossword-add-word-form-field {
+      margin-left: 100px; }
+      .crossword-add-word-form .crossword-add-word-form-field-wrapper .crossword-add-word-form-field input, .crossword-add-word-form .crossword-add-word-form-field-wrapper .crossword-add-word-form-field textarea, .crossword-add-word-form .crossword-add-word-form-field-wrapper .crossword-add-word-form-field select {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
+  .crossword-add-word-form .crossword-add-word-form-submit-button {
+    float: right;
+    margin: 10px; }
+
 .navigation {
   height: 50px;
   background: lightgrey; }
@@ -80,8 +133,22 @@ li {
 .hidden {
   display: none !important; }
 
-button#prev, .paggination {
+button#prev {
   float: left; }
+
+.paggination {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 5px; }
 
 button#next {
   float: right; }
+
+/*# sourceMappingURL=crossword.css.map */
