@@ -56,7 +56,6 @@ $component-name: crossword;
             font-size: 14px;
             font-weight: 600;
         }
-
       }
   }
 }
@@ -199,4 +198,7 @@ button#prev {
 button#next {
   float: right;
   margin: 8px;
+}
+.crossword-print-button{
+  float: right;
 }

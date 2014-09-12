@@ -50,6 +50,9 @@
                 <div class="crossword-question"><span class="crossword-question-counter">{{ forloop.counter }}</span><span class="crossword-question-label">{{ question }}</span></div>
             {% endfor %}
         </div>
+    <div>
+        <button class="crossword-print-button btn btn-success"  onClick="window.print()">Print Crossword</button>
+    </div>
     </div>
 {% else %}
     {{ crossword.result }}

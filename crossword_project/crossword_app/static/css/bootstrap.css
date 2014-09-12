@@ -255,6 +255,22 @@ th {
   .table-bordered td {
     border: 1px solid #ddd !important;
   }
+  .crossword-table-cell{
+
+  }
+  .crossword-table-cell-label{
+      display: none;
+  }
+  .result{
+      outline: 2px solid blue;
+  }
+  .btn, .navigation, footer, .navbar, head{
+      display: none !important;
+      visibility: hidden !important;
+      width:0px;
+      height: 0px;
+  }
+
 }
 * {
   -webkit-box-sizing: border-box;
