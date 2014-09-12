@@ -17,9 +17,9 @@
 {% endblock %}
 
 {% block content %}
-    <button id="prev" class="btn btn-success" offset="0" url="{% url 'words_list' %}">Prev</button>
+    <button id="prev" class="btn btn-success" offset="-20" url="{% url 'words_list' %}">Prev</button>
     <div class="paggination"></div>
-    <button id="next" class="btn btn-success" limit="20" url="{% url 'words_list' %}">Next</button>
+    <button id="next" class="btn btn-success" limit="0" url="{% url 'words_list' %}">Next</button>
     <div class="table-wrapper">
         <table class="crossword-table-ingridients">
             <caption>

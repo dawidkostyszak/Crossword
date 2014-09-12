@@ -7,7 +7,7 @@ $( document ).ready(function() {
         limit = parseInt(next.attr('limit')),
         url = prev.attr('url'),
         showHide = function () {
-            if (offset === 20) {
+            if (offset === 0) {
                 prev.hide();
             } else {
                 prev.show();
@@ -49,7 +49,14 @@ $( document ).ready(function() {
                 table.html('<td colspan="3">No existing questions.</td>');
             }
         },
-        getWords = function (url) {
+        getWords = function (url, getNext) {
+            if (getNext) {
+                offset += 20;
+                limit += 20;
+            } else {
+                offset -= 20;
+                limit -= 20;
+            }
             $.ajax({
                 url: url,
                 data: {
@@ -59,8 +66,6 @@ $( document ).ready(function() {
                 success: function(result){
                     max = result.max;
                     pagination.text('Page ' + ((offset/20) + 1) + ' of ' + Math.ceil(max/20));
-                    offset += 20;
-                    limit += 20;
                     prev.attr('offset', offset);
                     next.attr('limit', limit);
                     renderWords(result.words);
@@ -71,11 +76,11 @@ $( document ).ready(function() {
         };
 
     showHide();
-    getWords(url);
+    getWords(url, true);
     $(prev).click(function() {
-        getWords(url)
+        getWords(url, false)
     });
     $(next).click(function() {
-        getWords(url)
+        getWords(url, true)
     });
 });
