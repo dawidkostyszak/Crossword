@@ -18,6 +18,7 @@
 
 {% block content %}
     <button id="prev" class="btn btn-success" offset="0" url="{% url 'words_list' %}">Prev</button>
+    <div class="paggination"></div>
     <button id="next" class="btn btn-success" limit="20" url="{% url 'words_list' %}">Next</button>
     <div class="table-wrapper">
         <table class="crossword-table-ingridients">
@@ -29,38 +30,19 @@
                 <th>Questions</th>
                 <th>Questions difficulty</th>
             </tr>
-            {% for word in words %}
-                <tr class="crossword-table-ingridients-words">
-                    <td>{{ word.name }}</td>
-                    <td>{{ word.question }}</td>
-                    <td class="difficulty">{{ word.question.difficulty }}</td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="3">No existing words.</td>
-                </tr>
-            {% endfor %}
+            <tbody class="words"></tbody>
         </table>
     </div>
     <div class="table-wrapper">
         <table class="crossword-table-ingridients">
             <caption>
-                    Existing questions:
-                </caption>
-                <tr>
-                    <th>Question</th>
-                    <th>Difficulty</th>
-                </tr>
-                {% for question in questions %}
-                    <tr class="crossword-table-ingridients-words">
-                        <td>{{ question.question }}</td>
-                        <td class="difficulty">{{ question.difficulty }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="3">No existing questions.</td>
-                    </tr>
-                {% endfor %}
+                Existing questions:
+            </caption>
+            <tr>
+                <th>Question</th>
+                <th>Difficulty</th>
+            </tr>
+            <tbody class="questions"></tbody>
         </table>
     </div>
 {% endblock %}

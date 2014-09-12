@@ -12,7 +12,7 @@ class HomepageView(TemplateView):
     template_name = "home.html"
 
     def get(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse('words_list'))
+        return HttpResponseRedirect(reverse('words'))
 
 
 class LoginRequiredMixin(object):

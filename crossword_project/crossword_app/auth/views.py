@@ -25,7 +25,7 @@ class LoginView(FormView):
             user = authenticate(username=form_data['email'], password=form_data['password'])
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse('words_list'))
+                return HttpResponseRedirect(reverse('words'))
         form.errors['__all__'] = 'Username or password are incorrect'
         return render(request, self.template_name, {'form': form})
 

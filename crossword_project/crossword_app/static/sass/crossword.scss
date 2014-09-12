@@ -107,10 +107,10 @@ li {
   display: none !important;
 }
 
-#prev {
+button#prev, .paggination {
   float: left;
 }
 
-#next {
+button#next {
   float: right;
 }

@@ -80,4 +80,8 @@ li {
 .hidden {
   display: none !important; }
 
-/*# sourceMappingURL=crossword.css.map */
+button#prev, .paggination {
+  float: left; }
+
+button#next {
+  float: right; }

@@ -1,28 +1,53 @@
+import json
+from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.db import DatabaseError
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from ..views import LoginRequiredMixin
 from models import Word, Question
 from form import WordForm
 from ..form import CrosswordForm
-from random import sample
-from django.views.generic import FormView, ListView
+from django.views.generic import FormView, ListView, TemplateView
 
 
-class WordList(ListView):
+class Words(TemplateView):
     template_name = "word/words_list.html"
-    model = Word
     form_class = CrosswordForm
 
     def get_context_data(self, **kwargs):
-        offset = int(self.request.GET.get('offset', 0))
-        limit = int(self.request.GET.get('limit', 20))
-        context = super(WordList, self).get_context_data(**kwargs)
-        context['words'] = self.model.objects.all().order_by('?')[offset:limit]
-        context['questions'] = Question.objects.all().order_by('?')[offset:limit]
+        context = super(Words, self).get_context_data(**kwargs)
         context['form'] = self.form_class()
         return context
+
+
+class WordsList(ListView):
+    model = Word
+    form_class = CrosswordForm
+
+    def get(self, request, *args, **kwargs):
+        offset = int(self.request.GET.get('offset', 0))
+        limit = int(self.request.GET.get('limit', 20))
+        response_data = {
+            'max': self.model.objects.all().count(),
+            'words': [
+                {
+                    'word': word.name,
+                    'question': word.question.question,
+                    'difficulty': word.question.difficulty.difficulty
+                }
+                for word in self.model.objects.all()[offset:limit]
+            ],
+            'questions': [
+                {
+                    'question': question.question,
+                    'difficulty': question.difficulty.difficulty
+                }
+                for question in Question.objects.all()[offset:limit]
+            ]
+        }
+
+        return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 class WordAdd(LoginRequiredMixin, FormView):
@@ -54,6 +79,6 @@ class WordAdd(LoginRequiredMixin, FormView):
             except DatabaseError:
                 return render(request, self.template_name, {'form': form})
 
-            return HttpResponseRedirect(reverse('words_list'))
+            return HttpResponseRedirect(reverse('words'))
 
         return render(request, self.template_name, {'form': form})

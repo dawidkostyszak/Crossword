@@ -15,6 +15,12 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
+    def question_name(self):
+        return self.question
+
+    def question_difficulty(self):
+        return self.difficulty
+
 
 class Word(models.Model):
     name = models.CharField(max_length=30)
